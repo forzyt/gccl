@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
@@ -47,5 +48,24 @@ public class MainController {
             testUtil.setResultMsg("暂无工程类型");
         }
         return testUtil;
+    }
+
+    @RequestMapping(value="/testPro",produces="text/html;charset=utf-8;")
+    @ResponseBody
+    public Map<String, Object> testPro(HttpServletRequest request){
+        Map<String, Object> mapA = WebUtils.getParametersStartingWith(request, "aaa");
+        Map<String, Object> mapB = WebUtils.getParametersStartingWith(request, "bbb");
+
+        //4通过map.entrySet遍历key和value(推荐使用，特别是容量大时)
+        System.out.println("通过map.entrySet遍历key和value(推荐使用，特别是容量大时)");
+        for(Map.Entry<String, Object> entry:mapA.entrySet()){
+            System.out.println("key="+entry.getKey()+"\tvalue="+entry.getValue());
+        }
+        //4通过map.entrySet遍历key和value(推荐使用，特别是容量大时)
+        System.out.println("通过map.entrySet遍历key和value(推荐使用，特别是容量大时)");
+        for(Map.Entry<String, Object> entry:mapB.entrySet()){
+            System.out.println("key="+entry.getKey()+"\tvalue="+entry.getValue());
+        }
+        return mapA;
     }
 }

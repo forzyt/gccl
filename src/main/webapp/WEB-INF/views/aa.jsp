@@ -12,7 +12,7 @@
 <head>
     <base href="<%=basePath%>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <script src="js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 
@@ -27,3 +27,21 @@
 
 
 </body>
+<script>
+    var json = {
+        "aaa":{"user_name":"aaa",
+            "user_role_id":1},
+        "bbb":{"username":"bbb",
+            "userroleid":2}
+
+    };
+    //JQuery Ajax请求
+    $.post("testPro",
+        json,
+        function(data){
+
+        },
+        'json'
+    );
+</script>
+</html>
